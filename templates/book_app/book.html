@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %} {{title}} {% endblock %}
+
+{% block content %}
+<h1>{{book.title}} {% if book.is_best_selling %}<span class="top">TOP!</span>{% endif %}</h1>
+<a href="{% url 'edit_book' book.slug %}">Редактировать</a>
+<a href="{% url 'delete_book' book.id %}">Удалить книгу</a>
+<ul>
+    <li>Автор: <a href="{% url 'author_by_id' book.author.id %}">{{book.author.name | title}} {{book.author.surname | title}}</a></li>
+    <li>Рейтинг: {{book.rating}}</li>
+</ul>
+{% endblock %}
+

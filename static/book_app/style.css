@@ -1,0 +1,17 @@
+body {
+    background-color: whitesmoke;
+    padding: 0;
+    margin: 0;
+}
+
+.top {
+    color: red;
+    font-size: medium;
+}
+
+.form-element {
+    margin: 2px;
+    padding: 2px;
+    display: flex;
+    flex-direction: row;
+}

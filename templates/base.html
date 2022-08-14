@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'book_app/style.css' %}">
+    {% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+
+</head>
+<body>
+    <header>
+        <a href="/">Главная</a>
+        <a href="{% url 'add_book' %}">Добавить книгу</a>
+    </header>
+    {% block content %}
+
+    {% endblock %}
+    
+</body>
+</html>
