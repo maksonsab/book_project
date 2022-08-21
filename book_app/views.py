@@ -4,7 +4,7 @@ from django.views.generic import CreateView, UpdateView, DetailView, ListView
 from django.urls import reverse
 
 from .models import Author, Book
-from .forms import AddBookForm
+from .forms import AddBookForm, AddAuthorForm
 
 class IndexView(ListView):
     model = Book
@@ -18,15 +18,6 @@ class IndexView(ListView):
 class GetBook(DetailView):
     model = Book
     template_name = 'book_app/book.html'
-
-class GetAuthor(DetailView):
-    model = Author
-    template_name = 'book_app/author.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = f'{context["object"].name}  {context["object"].surname}'
-        return context
         
 class AddBookView(CreateView):
     model = Book
@@ -48,3 +39,18 @@ class DeleteBook(View):
         book = get_object_or_404(Book, pk=pk)
         book.delete()
         return redirect('/')
+
+class GetAuthor(DetailView):
+    model = Author
+    template_name = 'book_app/author.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = f'{context["object"].name}  {context["object"].surname}'
+        return context
+
+class AddAuthorView(CreateView):
+    model = Author
+    form_class = AddAuthorForm
+    template_name = 'book_app/add_new_author.html'
+    success_url = '/'

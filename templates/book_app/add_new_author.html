@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Добавить книгу {% endblock %}
+{% block content %}
+<h1>Добавить автора</h1>
+<form method="POST">
+    <div class="add-book-form">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-element">
+        {{ field.label_tag }} {{ field.errors }} {{ field }}
+        </div>
+        {% endfor %}
+        <input type="submit" value={% if edit %} "Сохранить" {% else %} "Добавить" {% endif %}>
+    </div>
+</form>
+{% endblock %}
