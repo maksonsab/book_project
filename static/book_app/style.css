@@ -4,6 +4,13 @@ body {
     margin: 0;
 }
 
+.index-main {
+    display: flex;
+    flex-direction: row;
+    
+    justify-items: left;
+}
+
 .top {
     color: red;
     font-size: medium;

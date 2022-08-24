@@ -9,9 +9,15 @@ from .forms import AddBookForm, AddAuthorForm
 class IndexView(ListView):
     model = Book
     template_name = 'book_app/index.html'
-    
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset[:10]
+        return queryset
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        authors = Author.objects.order_by('-id')[:10]
+        context['authors'] = authors
         context['title'] = 'Главная страница'
         return context
 

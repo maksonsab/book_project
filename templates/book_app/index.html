@@ -6,10 +6,22 @@
 {% block title %} {{title}}  {% endblock %}
 
 {% block content %}
-    <h2>Список книг в базе:</h2>
-    <ol>
-        {% for book in object_list %}
-            <li><a href="{% url 'book_by_slug' book.slug %}">{{book.title}}</a></li>
-        {% endfor %}
-    </ol>
+    <div class="index-main">
+        <div id="index-book">
+            <h2>Последние киги:</h2>
+            <ol>
+                {% for book in object_list %}
+                    <li><a href="{% url 'book_by_slug' book.slug %}">{{book.title}}</a></li>
+                {% endfor %}
+            </ol>
+        </div>
+        <div id="index-author">
+            <h2>Последние авторы:</h2>
+            <ol>
+                {% for author in authors %}
+                    <li><a href="{% url 'author_by_id' author.id %}">{{author}}</a></li>
+                {% endfor %}
+                </ol>
+        </div>
+    </div>
 {% endblock %}
