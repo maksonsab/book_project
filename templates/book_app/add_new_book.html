@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %} Добавить книгу {% endblock %}
 {% block content %}
-<h1>Добавить книгу</h1>
+<h1>{% if edit %} Изменить информацию о книге {% else %} Добавить книгу {% endif %}</h1>
 <form method="POST">
     <div class="add-book-form">
         {% csrf_token %}

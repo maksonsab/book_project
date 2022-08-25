@@ -5,6 +5,10 @@
 {% block title %} {{title}} {% endblock %}
 
 {% block content %}
+    <h1>{{author.name}} {{author.surname}}</h1>
+    <a href="{% url 'edit_author' author.id %}">Редактировать</a>
+    <a href="{% url 'delete_author' author.id %}">Удалить автора</a>
+    
     <p>Имя: {{author.name}}</p>
     <p>Фамилия: {{author.surname}} </p>
     <p>Дата рождения: {{author.birth}}</p>

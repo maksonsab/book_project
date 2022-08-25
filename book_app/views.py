@@ -11,8 +11,7 @@ class IndexView(ListView):
     template_name = 'book_app/index.html'
 
     def get_queryset(self):
-        queryset = super().get_queryset()
-        queryset = queryset[:10]
+        queryset = super().get_queryset().order_by('-id')[:10]
         return queryset
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -37,6 +36,11 @@ class EditBookView(UpdateView):
     template_name = 'book_app/add_new_book.html'
     success_url = '/' 
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['edit'] = True
+        return context
+
 class DeleteBook(View):
     def get(self, request, pk):
         book = get_object_or_404(Book, pk=pk)
@@ -60,3 +64,30 @@ class AddAuthorView(CreateView):
     form_class = AddAuthorForm
     template_name = 'book_app/add_new_author.html'
     success_url = '/'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Добавить автора'
+        return context
+
+class EditAuthorView(UpdateView):
+    model = Author
+    form_class = AddAuthorForm
+    template_name = 'book_app/add_new_author.html'
+    success_url = '/'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['edit'] = True
+        context['title'] = 'Изменить информацию об авторе'
+        return context
+    
+class DeleteAuthorView(View):
+    def get(self, request, pk):
+        author = get_object_or_404(Author, pk=pk)
+        return render(request, 'book_app/delete_author.html', context={'author':author})
+    
+    def post(self, request, pk):
+        author = get_object_or_404(Author, pk=pk)
+        author.delete()
+        return redirect('/')

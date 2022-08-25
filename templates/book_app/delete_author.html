@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Удаление автора — {{author.surname}} {% endblock %}
+
+{% block content %}
+<h2>Вы уверены, что хотите удалить автора "{{author.name}} {{author.surname}}"?</h2>
+<form method="post">
+    {% csrf_token %}
+    <input type="submit" value="Да, удлить автора!">
+</form>
+
+{% endblock %}
