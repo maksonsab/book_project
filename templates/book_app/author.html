@@ -8,11 +8,18 @@
     <h1>{{author.name}} {{author.surname}}</h1>
     <a href="{% url 'edit_author' author.id %}">Редактировать</a>
     <a href="{% url 'delete_author' author.id %}">Удалить автора</a>
-    
-    <p>Имя: {{author.name}}</p>
-    <p>Фамилия: {{author.surname}} </p>
-    <p>Дата рождения: {{author.birth}}</p>
-    <p>Страна: {{author.country}}</p>
+    <br/>
+    <div class="author-info-block">
+        <div class="author-image">
+            <img src="{{author.photo.url}}" id="author">
+        </div>
+        <div class="author-info">
+            <p>Имя: {{author.name}}</p>
+            <p>Фамилия: {{author.surname}} </p>
+            <p>Дата рождения: {{author.birth}}</p>
+            <p>Страна: {{author.country}}</p>
+        </div>
+    </div>
     <h3>Книги</h3>
     <ul>
         {% for book in author.book_set.all %}

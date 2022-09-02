@@ -26,7 +26,8 @@ class AddAuthorForm(ModelForm):
             'name' : 'Имя',
             'surname' : 'Фамилия',
             'birth' : 'Дата рождения',
-            'country' : 'Старана'
+            'country' : 'Старана',
+            'photo' : 'Фото',
         }
         widgets = {
             'birth' : DateInput(attrs={'type': 'date', 'placeholder':'-'}),

@@ -1,3 +1,4 @@
+from email.policy import default
 from ftplib import all_errors
 from django.db import models
 from django.utils.text import slugify
@@ -8,6 +9,7 @@ class Author(models.Model):
     surname = models.CharField(max_length=50)
     birth = models.DateField()
     country = models.CharField(max_length=30)
+    photo = models.ImageField(upload_to='author/', default='author/no-photo.jpg')
     def __str__(self):
         return f'{self.surname} {self.name}'
 

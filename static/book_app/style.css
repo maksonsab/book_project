@@ -7,7 +7,6 @@ body {
 .index-main {
     display: flex;
     flex-direction: row;
-    
     justify-items: left;
 }
 
@@ -21,4 +20,17 @@ body {
     padding: 2px;
     display: flex;
     flex-direction: row;
+}
+
+.author-info-block {
+    display: flex;
+    flex-direction: row;
+    justify-items: left;
+    column-gap: 10px;
+    padding: 10px;
+    align-items: center;
+}
+
+#author, img {
+    height: 200px;
 }
