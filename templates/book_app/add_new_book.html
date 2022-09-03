@@ -3,7 +3,7 @@
 {% block title %} Добавить книгу {% endblock %}
 {% block content %}
 <h1>{% if edit %} Изменить информацию о книге {% else %} Добавить книгу {% endif %}</h1>
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
     <div class="add-book-form">
         {% csrf_token %}
         {% for field in form %}

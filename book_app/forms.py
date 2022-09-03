@@ -14,7 +14,9 @@ class AddBookForm(ModelForm):
             'is_best_selling' : 'Топ продаж',
             'author' : 'Автор',
             'year' : 'Год выхода', 
-            'slug' : 'Slug (генерируется автоматически)'
+            'slug' : 'Slug (генерируется автоматически)',
+            'description' : 'Описание',
+            'image' : 'Обложка',
         }
 
 class AddAuthorForm(ModelForm):

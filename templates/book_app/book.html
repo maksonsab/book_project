@@ -5,12 +5,21 @@
 {% block title %} {{title}} {% endblock %}
 
 {% block content %}
-<h1>{{book.title}} {% if book.is_best_selling %}<span class="top">TOP!</span>{% endif %}</h1>
-<a href="{% url 'edit_book' book.slug %}">Редактировать</a>
-<a href="{% url 'delete_book' book.id %}">Удалить книгу</a>
-<ul>
-    <li>Автор: <a href="{% url 'author_by_id' book.author.id %}">{{book.author.name | title}} {{book.author.surname | title}}</a></li>
-    <li>Рейтинг: {{book.rating}}</li>
-</ul>
+    <h1>{{book.title}} {% if book.is_best_selling %}<span class="top">TOP!</span>{% endif %}</h1>
+    <a href="{% url 'edit_book' book.slug %}">Редактировать</a>
+    <a href="{% url 'delete_book' book.id %}">Удалить книгу</a>
+    <div class="book-info-block">
+        <div id="book-image">
+            <img src="{{book.image.url}}">
+        </div>
+        <ul>
+            <li>Автор: <a href="{% url 'author_by_id' book.author.id %}">{{book.author.name | title}} {{book.author.surname | title}}</a></li>
+            <li>Рейтинг: {{book.rating}}</li>
+        </ul>
+        <div class="book-description">
+            <h3>Описание</h3>
+            <p>{{book.description}}</p>
+        </div>
+    </div>
 {% endblock %}
 

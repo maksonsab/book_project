@@ -20,6 +20,8 @@ class Book(models.Model):
     author = models.ForeignKey(Author, on_delete=models.SET_NULL, blank=True, null=True, default=None)
     year = models.IntegerField(validators=[MinValueValidator(1)], null=False, default=1)
     slug = models.SlugField(default='', null=True, blank=True, allow_unicode=True, unique=True)
+    description = models.TextField(default='Нет описания', blank=True)
+    image = models.ImageField(upload_to='book/', default='book/no-image.jpeg')
 
     def save(self, *args, **kwargs):
         if not self.slug:
